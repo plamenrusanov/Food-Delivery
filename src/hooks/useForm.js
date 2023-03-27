@@ -7,6 +7,10 @@ export function useForm(initialValues) {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
 
+  const changeValue = (name, value) => {
+    setValues((state) => ({...state, [name]: value}));
+  }
+
   const resetForm = () =>{
     setValues(initialValues);
   }
@@ -14,6 +18,7 @@ export function useForm(initialValues) {
   return {
     values,
     changeHandler,
-    resetForm
+    resetForm,
+    changeValue
   }
 }

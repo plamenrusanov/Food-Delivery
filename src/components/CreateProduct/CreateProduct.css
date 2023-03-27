@@ -1,0 +1,36 @@
+.form-holder {
+    width: 300px;
+    margin: 100px auto;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  
+  .form div {
+    position: relative;
+  
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form div:not(:last-child) {
+    margin-bottom: 36px;
+  }
+  
+  .form div:nth-child(4) {
+    margin-bottom: 44px;
+  }
+  
+  .submit-error{
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  

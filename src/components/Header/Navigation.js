@@ -21,6 +21,9 @@ export default function Navigation() {
             Hi {userName}
           </li>
           <li>
+            <NavLink to="/create-product">Create Product</NavLink>
+          </li>
+          <li>
             <NavLink to="/logout">Logout</NavLink>
           </li>
         </ul>

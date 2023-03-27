@@ -46,13 +46,11 @@ export default function Login() {
     e.preventDefault();
     try {
       let data = await login(values.email, values.password);
-      debugger
       setUser(data);
       resetForm();
       setSubmitError("");
       navigate("/");
     } catch (error) {
-      debugger
       setSubmitError(error.message);
     }
   };
