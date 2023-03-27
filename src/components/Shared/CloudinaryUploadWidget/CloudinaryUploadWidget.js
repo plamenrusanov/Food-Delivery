@@ -1,6 +1,6 @@
 export default function CloudinaryUploadWidget({ changeValue }) {
-  const cloudName = "doyj9avxq"; // replace with your own cloud name
-  const uploadPreset = "wneylmc7"; // replace with your own upload preset
+  const cloudName = ""; // replace with your own cloud name
+  const uploadPreset = ""; // replace with your own upload preset
 
   // Remove the comments from the code below to add
   // additional functionality.
