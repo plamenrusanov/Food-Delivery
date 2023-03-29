@@ -3,6 +3,7 @@
     flex-direction: column;
     border: 1px solid black;
     width: 300px;
+    border-radius: 4px;
 }
 
 .card__img {
@@ -21,7 +22,7 @@
 
 .content__title {
     font-size: 21px;
-    margin-bottom: 6px;
+    margin-bottom: 20px;
 }
 
 .content__badge {
@@ -30,5 +31,14 @@
     color: #ff9872;
     padding: 4px 16px;
     border-radius: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
+}
+
+.content__section-title{
+    margin-bottom: 10px;
+}
+
+.btn{
+    border-radius: 4px;
+    background-color: var(--palette-default);
 }

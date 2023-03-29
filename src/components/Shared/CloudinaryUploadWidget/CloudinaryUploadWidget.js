@@ -1,6 +1,6 @@
-export default function CloudinaryUploadWidget({ changeValue }) {
-  const cloudName = ""; // replace with your own cloud name
-  const uploadPreset = ""; // replace with your own upload preset
+export default function CloudinaryUploadWidget({ changeValue, fixLabel }) {
+  const cloudName = "doyj9avxq"; // replace with your own cloud name
+  const uploadPreset = "wneylmc7"; // replace with your own upload preset
 
   // Remove the comments from the code below to add
   // additional functionality.
@@ -29,11 +29,13 @@ export default function CloudinaryUploadWidget({ changeValue }) {
       if (!error && result && result.event === "success") {
         console.log("Done! Here is the image info: ", result.info);
         changeValue(result.info.secure_url);
+        fixLabel(true);
       }
     }
   );
 
   const onClickHandler = (e) => {
+    e.preventDefault();
     myWidget.open();
   };
 

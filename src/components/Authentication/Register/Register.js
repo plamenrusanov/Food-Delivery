@@ -58,7 +58,6 @@ export default function Register() {
     e.preventDefault();
     try {
       let data = await register(values.username, values.email, values.password);
-      debugger
       setUser(data);
       resetForm();
       setSubmitError("");

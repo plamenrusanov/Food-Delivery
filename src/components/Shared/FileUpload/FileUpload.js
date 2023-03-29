@@ -36,7 +36,7 @@ export default function FileUpload({
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
       />
-      <CloudinaryUploadWidget changeValue={changeValue.bind(null, name)} />
+      <CloudinaryUploadWidget changeValue={changeValue.bind(null, name)} fixLabel={setFocus} />
     </div>
   );
 }

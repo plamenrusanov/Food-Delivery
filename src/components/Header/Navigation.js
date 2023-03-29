@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Navigation() {
-  const { isAuthenticated, userName } = useContext(AuthContext);
+  const { isAuthenticated, userName, isAdmin } = useContext(AuthContext);
   return (
     <nav className="header-nav">
       <ul className="left-nav list-nav">
@@ -20,9 +20,9 @@ export default function Navigation() {
           <li>
             Hi {userName}
           </li>
-          <li>
+          {isAdmin && <li>
             <NavLink to="/create-product">Create Product</NavLink>
-          </li>
+          </li>}
           <li>
             <NavLink to="/logout">Logout</NavLink>
           </li>

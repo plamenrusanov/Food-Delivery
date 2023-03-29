@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ProductsContext } from "../../contexts/ProductsContext";
+import { post } from "../../services/apiService";
 
 import TextField from "../Shared/TextField/TextField";
 import Button from "../Shared/Button/Button";
@@ -10,9 +12,10 @@ import FileUpload from "../Shared/FileUpload/FileUpload";
 
 import "./CreateProduct.css";
 
-export default function CreateProduct() {
+export default function CreateProduct({ setProducts }) {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
+  const { addProduct } = useContext(ProductsContext);
   const [submitError, setSubmitError] = useState("");
   const { values, changeHandler, resetForm, changeValue } = useForm({
     name: "",
@@ -54,8 +57,18 @@ export default function CreateProduct() {
     return result;
   }
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      var responce = await post("/data/products", token, values);
+      console.log(responce);
+      addProduct(responce);
+      resetForm();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setSubmitError(error.message);
+    }
   };
 
   return (

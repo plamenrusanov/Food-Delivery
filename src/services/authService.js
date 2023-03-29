@@ -21,5 +21,5 @@ export async function register(username, email, password, token) {
 }
 
 export async function logout(token) {
-  await get(endpoints.logout, token);
+   await get(endpoints.logout, token);
 }
