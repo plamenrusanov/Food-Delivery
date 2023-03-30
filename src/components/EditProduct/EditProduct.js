@@ -1,30 +1,29 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { post } from "../../services/apiService";
+import { put } from "../../services/apiService";
 
 import TextField from "../Shared/TextField/TextField";
 import Button from "../Shared/Button/Button";
 import FileUpload from "../Shared/FileUpload/FileUpload";
 
-import "./CreateProduct.css";
+import "../CreateProduct/CreateProduct.css";
 
-export default function CreateProduct({ setProducts }) {
+export default function EditProduct() {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
-  const { addProduct } = useContext(ProductsContext);
   const [submitError, setSubmitError] = useState("");
+  const { _id } = useParams();
+  const { products, replaceProduct } = useContext(ProductsContext);
+  const product = products.find((x) => x._id === _id);
   const { values, changeHandler, resetForm, changeValue } = useForm({
-    name: "",
-    price: "",
-    description: "",
-    imageUrl: "",
+    ...product,
   });
 
-  const url = "/data/products";
+  const url = (id) => `/data/products/${id}`;
 
   function validateField(key, value) {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
@@ -62,9 +61,9 @@ export default function CreateProduct({ setProducts }) {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      var responce = await post(url, token, values);
-      console.log(responce);
-      addProduct(responce);
+      var responce = await put(url(_id), token, values);
+      // console.log(responce);
+      replaceProduct(responce);
       resetForm();
       navigate("/");
     } catch (error) {
@@ -75,7 +74,7 @@ export default function CreateProduct({ setProducts }) {
 
   return (
     <div className="form-holder">
-      <h1 className="form-header">Create Prodict</h1>
+      <h1 className="form-header">Edit Prodict</h1>
       {submitError && <p className="submit-error">{submitError}</p>}
       <form className="form" onSubmit={onSubmitHandler}>
         <TextField
@@ -113,7 +112,7 @@ export default function CreateProduct({ setProducts }) {
           changeValue={changeValue}
         />
 
-        <Button type="submit">Create</Button>
+        <Button type="submit">Edit</Button>
       </form>
     </div>
   );

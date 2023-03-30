@@ -1352,7 +1352,7 @@
                 "name":"Shopska salad",
                 "price":"12.50",
                 "description":"Tomato, cucambers, paper",
-                "imageUrl":"https://res.cloudinary.com/doyj9avxq/image/upload/v1679934866/gh0ckxqeiofe2uxbz9rf.jpg",
+                "imageUrl": "https://res.cloudinary.com/doyj9avxq/image/upload/v1680112505/shopska_qdb7qz.jpg",
                 "_createdOn":1679938365113
             },
             "4d20b7d3-ccab-436b-9349-31e8b320b3d5": {
@@ -1361,6 +1361,14 @@
                 'name': "Salmon Fillet",
                 'price': "34.90",
                 '_createdOn': 1680110452481,
+                '_ownerId': "1e0d48ce-1fa7-4b59-b6a8-c59e46cab490"
+            },
+            "e0c5d07c-bd32-45fc-8833-c935909edd8f":{
+                'description': "tomato sause, mozzarela...",
+                'imageUrl':"https://res.cloudinary.com/doyj9avxq/image/upload/v1680110872/qfvmfykjichp2ml84eop.jpg",
+                'name': "Pizza Margarita",
+                'price': "18.70",
+                '_createdOn': 1680110878709,
                 '_ownerId': "1e0d48ce-1fa7-4b59-b6a8-c59e46cab490"
             }
         }

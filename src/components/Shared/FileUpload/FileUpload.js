@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CloudinaryUploadWidget from "../CloudinaryUploadWidget/CloudinaryUploadWidget";
 
@@ -12,6 +12,10 @@ export default function FileUpload({
   changeValue,
 }) {
   const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    setFocus(value === "" ? false : true);
+  }, [value]);
 
   const onFocusHandler = (e) => {
     setFocus(true);
@@ -36,7 +40,10 @@ export default function FileUpload({
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
       />
-      <CloudinaryUploadWidget changeValue={changeValue.bind(null, name)} fixLabel={setFocus} />
+      <CloudinaryUploadWidget
+        changeValue={changeValue.bind(null, name)}
+        fixLabel={setFocus}
+      />
     </div>
   );
 }

@@ -42,3 +42,9 @@
     border-radius: 4px;
     background-color: var(--palette-default);
 }
+
+.admin_btn_holder{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+}

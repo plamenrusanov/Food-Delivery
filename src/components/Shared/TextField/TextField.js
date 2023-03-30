@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./TextField.css";
 
 export default function TextField({
@@ -11,6 +11,10 @@ export default function TextField({
 }) {
   const [focus, setFocus] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setFocus(value === "" ? false : true);
+  },[value]);
 
   const onFocusHandler = (e) => {
     setFocus(true);

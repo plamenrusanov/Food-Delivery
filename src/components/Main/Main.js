@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { GetAll } from "../../services/productService";
 
 import CreateProduct from "../CreateProduct/CreateProduct";
+import EditProduct from "../EditProduct/EditProduct";
 import Register from "../Authentication/Register/Register";
 import Login from "../Authentication/Login/Login";
 import Home from "../Home/Home";
@@ -27,9 +28,17 @@ export default function Main() {
     setProducts((state) => [...state, product]);
   };
 
+  const replaceProduct = (product) => {
+    var index = products.findIndex(x => x._id === product._id);
+    if(index !== -1){
+      products[index] = product;
+    }
+  }
+
   const contextValues = {
     products,
     addProduct,
+    replaceProduct,
   };
 
   return (
@@ -41,6 +50,7 @@ export default function Main() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/create-product" element={<CreateProduct />} />
+          <Route path="/edit-product/:_id" element={<EditProduct />} />
         </Routes>
       </main>
     </ProductsContext.Provider>
