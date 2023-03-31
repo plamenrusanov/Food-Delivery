@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { put } from "../../services/apiService";
+import { editProduct } from "../../services/productService";
 
 import TextField from "../Shared/TextField/TextField";
 import Button from "../Shared/Button/Button";
@@ -23,7 +23,6 @@ export default function EditProduct() {
     ...product,
   });
 
-  const url = (id) => `/data/products/${id}`;
 
   function validateField(key, value) {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
@@ -60,9 +59,8 @@ export default function EditProduct() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    try {
-      var responce = await put(url(_id), token, values);
-      // console.log(responce);
+    try {   
+      var responce = await editProduct(token, values);
       replaceProduct(responce);
       resetForm();
       navigate("/");

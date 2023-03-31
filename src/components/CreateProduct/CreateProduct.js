@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { post } from "../../services/apiService";
+import { create } from "../../services/productService"
 
 import TextField from "../Shared/TextField/TextField";
 import Button from "../Shared/Button/Button";
@@ -12,7 +12,7 @@ import FileUpload from "../Shared/FileUpload/FileUpload";
 
 import "./CreateProduct.css";
 
-export default function CreateProduct({ setProducts }) {
+export default function CreateProduct() {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
   const { addProduct } = useContext(ProductsContext);
@@ -24,7 +24,6 @@ export default function CreateProduct({ setProducts }) {
     imageUrl: "",
   });
 
-  const url = "/data/products";
 
   function validateField(key, value) {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
@@ -62,8 +61,7 @@ export default function CreateProduct({ setProducts }) {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      var responce = await post(url, token, values);
-      console.log(responce);
+      var responce = await create(token, values);
       addProduct(responce);
       resetForm();
       navigate("/");

@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { AuthContext } from "../../contexts/AuthContext";
-import { GetAll } from "../../services/productService";
+import { getAll } from "../../services/productService";
 
 import CreateProduct from "../CreateProduct/CreateProduct";
 import EditProduct from "../EditProduct/EditProduct";
@@ -16,13 +15,11 @@ import "./Main.css";
 
 export default function Main() {
   const [products, setProducts] = useState([]);
-  const { token } = useContext(AuthContext);
   useEffect(() => {
-    GetAll(token)
-    .then(data => setProducts(data))
-    .catch(error => console.log(error))
-
-  }, [token, setProducts]);
+     getAll()
+     .then(data => setProducts(data))
+     .catch(e => console.log(e));
+  }, []);
 
   const addProduct = (product) => {
     setProducts((state) => [...state, product]);
@@ -33,12 +30,17 @@ export default function Main() {
     if(index !== -1){
       products[index] = product;
     }
-  }
+  };
+
+  const removeProduct = (id) => {
+    setProducts(products.filter(x => x._id !== id));
+  };
 
   const contextValues = {
     products,
     addProduct,
     replaceProduct,
+    removeProduct
   };
 
   return (
