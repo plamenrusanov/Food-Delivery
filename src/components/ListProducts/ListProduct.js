@@ -11,7 +11,7 @@ export default function ListProducts () {
 const productsContext = useContext(ProductsContext);
 
 return(<div className="card_holder">
-    {productsContext.products.map(x => <Card key={x._id} {...x}  />)}
+    {productsContext.products.map(x => <Card key={x._id} product={x}  />)}
 </div> );
 
 }

@@ -1,6 +1,10 @@
 import { useState } from "react";
 
+
+import { useShoppingCart } from './hooks/useShoppingCart';
 import { AuthContext } from "./contexts/AuthContext";
+import { ShoppingCartContext } from "./contexts/ShoppingCartContext";
+
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
@@ -22,8 +26,10 @@ function App() {
 
   return (
       <AuthContext.Provider value={contextValues}>
+        <ShoppingCartContext.Provider value={useShoppingCart()}>
         <Header />
         <Main />
+        </ShoppingCartContext.Provider>
       </AuthContext.Provider>
   );
 }

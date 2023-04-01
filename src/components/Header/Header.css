@@ -37,3 +37,20 @@
 .list-nav li{
   list-style: none;
 }
+.cart{
+  height: 30px;
+  position: absolute;
+}
+.cart_counter{
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 12px;
+  background-color: var(--palette-default-ligth);
+  padding: 2px 2px 1px 1px;
+  border-radius: 50%;
+  line-height: 1;
+  width: 12px;
+  text-align: center;
+}

@@ -1,9 +1,14 @@
 import { useContext } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navigation() {
   const { isAuthenticated, userName, isAdmin } = useContext(AuthContext);
+  const { count } = useContext(ShoppingCartContext);
   return (
     <nav className="header-nav">
       <ul className="left-nav list-nav">
@@ -11,18 +16,21 @@ export default function Navigation() {
           <Link to="/">Menu</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/shopping-cart">
+            <FontAwesomeIcon icon={faCartShopping} className="cart" />
+            <span className="cart_counter">{count}</span>
+          </Link>
         </li>
       </ul>
 
       {isAuthenticated ? (
         <ul className="rigth-nav list-nav">
-          <li>
-            Hi {userName}
-          </li>
-          {isAdmin && <li>
-            <NavLink to="/create-product">Create Product</NavLink>
-          </li>}
+          <li>Hi {userName}</li>
+          {isAdmin && (
+            <li>
+              <NavLink to="/create-product">Create Product</NavLink>
+            </li>
+          )}
           <li>
             <NavLink to="/logout">Logout</NavLink>
           </li>
