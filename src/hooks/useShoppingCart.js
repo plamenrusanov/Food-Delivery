@@ -1,24 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function useShoppingCart() {
-  const lsKey = "cart";
   const [values, setValues] = useState([]);
-
-  useEffect(() => {
-    let cart = window.localStorage.getItem(lsKey);
-    if (cart) {
-      cart = JSON.parse(cart);
-      setValues(cart);
-    }
-  }, []);
-
-  useEffect(
-    () => {
-      return  () => { let data = JSON.stringify(values);
-      window.localStorage.setItem(lsKey, data); }
-    },
-    [values]
-  );
 
   const addItem = (item) => {
     let current = values.find(x => x._id === item._id);
@@ -30,9 +13,7 @@ export function useShoppingCart() {
   };
 
   const calcTotal = () => {
-    return values.reduce((accumulator, el) => {
-      return accumulator += Number(el.Price) * el.qty;
-    }, 0);
+    return values.reduce((accumulator, el) =>  accumulator += Number(el.price) * el.qty, 0);
   };
 
   const clearCart = () => {
@@ -45,6 +26,19 @@ export function useShoppingCart() {
 
   const count = values.length;
 
+  function increaseQty(id, quantity) {
+    quantity++;
+    setValues((state) => state.map(el => el._id === id ? {...el, qty: quantity } : el));
+  }
+
+  function decreaseQty(id, quantity) {
+    quantity--;
+    if (quantity < 1) {
+      quantity = 1;
+    }
+    setValues((state) => state.map(el => el._id === id ? {...el, qty: quantity } : el));
+  }
+
   return {
     count,
     values,
@@ -52,5 +46,7 @@ export function useShoppingCart() {
     calcTotal,
     clearCart,
     removeItem,
+    increaseQty,
+    decreaseQty,
   };
 }

@@ -12,6 +12,7 @@ import Home from "../Home/Home";
 import Logout from "../Authentication/Logout/Logout";
 
 import "./Main.css";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 export default function Main() {
   const [products, setProducts] = useState([]);
@@ -53,6 +54,7 @@ export default function Main() {
           <Route path="/register" element={<Register />} />
           <Route path="/create-product" element={<CreateProduct />} />
           <Route path="/edit-product/:_id" element={<EditProduct />} />
+          <Route path="/shopping-cart" element={<ShoppingCart />} />
         </Routes>
       </main>
     </ProductsContext.Provider>

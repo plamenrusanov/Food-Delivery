@@ -29,9 +29,9 @@ export default function CreateProduct() {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
     let result = "";
     switch (key) {
-      case "username":
+      case "name":
         if (value.length < 3 || value.length > 20) {
-          result = "The username must be between 3 and 20 symbols!";
+          result = "The product name must be between 3 and 20 symbols!";
         }
         break;
 
@@ -41,9 +41,10 @@ export default function CreateProduct() {
         }
         break;
 
-      case "password":
-        if (value.length < 6) {
-          result = "The password length must be at list 6 symbols!";
+      case "price":
+        let num = Number(value);
+        if (!num) {
+          result = "The price is not correct number!";
         }
         break;
       case "re-pass":

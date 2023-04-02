@@ -1,0 +1,15 @@
+.sc {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.sc .sci_body:last-child {
+  /* border-bottom: none; */
+}
+
+.sc_empty {
+  text-align: center;
+}
