@@ -13,3 +13,13 @@
 .sc_empty {
   text-align: center;
 }
+
+.sc_total_holder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sc_total{
+  width: 200px;
+}

@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [user, setUser] = useState({});
@@ -29,6 +30,7 @@ function App() {
         <ShoppingCartContext.Provider value={useShoppingCart()}>
         <Header />
         <Main />
+        <Footer />
         </ShoppingCartContext.Provider>
       </AuthContext.Provider>
   );

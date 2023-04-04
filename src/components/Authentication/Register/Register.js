@@ -14,14 +14,14 @@ export default function Register() {
   const [submitError, setSubmitError] = useState("");
   const navigate  = useNavigate();
   const { setUser } = useContext(AuthContext);
-  const { values, changeHandler, resetForm } = useForm({
+  const { values, changeHandler, resetForm, validateField, validateForm, errors } = useForm({
     username: "",
     email: "",
     password: "",
     "re-pass": "",
   });
 
-  function validateField(key, value) {
+  function onValidation (key, value) {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
     let result = "";
     switch (key) {
@@ -57,11 +57,13 @@ export default function Register() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      let data = await register(values.username, values.email, values.password);
-      setUser(data);
-      resetForm();
-      setSubmitError("");
-      navigate("/");
+      if(validateForm(onValidation)){
+        let data = await register(values.username, values.email, values.password);
+        setUser(data);
+        resetForm();
+        setSubmitError("");
+        navigate("/");
+      }
     } catch (error) {
       setSubmitError(error.message);
     }
@@ -78,7 +80,8 @@ export default function Register() {
           inputType="text"
           value={values.username}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.username}
         />
 
         <TextField
@@ -87,7 +90,8 @@ export default function Register() {
           inputType="text"
           value={values.email}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.email}
         />
 
         <TextField
@@ -96,7 +100,8 @@ export default function Register() {
           inputType="password"
           value={values.password}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.password}
         />
 
         <TextField
@@ -105,7 +110,8 @@ export default function Register() {
           inputType="password"
           value={values["re-pass"]}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors["re-pass"]}
         />
 
         <Button type="submit">Register</Button>

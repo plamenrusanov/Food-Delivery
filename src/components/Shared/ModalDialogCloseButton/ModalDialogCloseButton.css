@@ -1,0 +1,21 @@
+header  .btn_holder{
+    display: inline-flex;
+}
+
+header .btn{
+    border-radius: 50%;
+    height: 36px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 36px;
+    padding: 0;
+    color: var(--palette-tipography);
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border: 0.5px solid var(--palette-tipography);
+}
+
+.btn > .svg-inline--fa.fa-xmark {
+    height: 24px;
+}

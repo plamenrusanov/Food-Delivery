@@ -15,12 +15,13 @@ export default function Navigation() {
         <li>
           <Link to="/">Menu</Link>
         </li>
-        <li>
+        <li className="sc_icon_holder">
           <Link to="/shopping-cart">
             <FontAwesomeIcon icon={faCartShopping} className="cart" />
             <span className="cart_counter">{count}</span>
           </Link>
         </li>
+        {isAuthenticated && <Link to="/my-orders">My Orders</Link> }
       </ul>
 
       {isAuthenticated ? (

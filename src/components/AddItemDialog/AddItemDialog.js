@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 
+import ModalDialogCloseButton from "../Shared/ModalDialogCloseButton/ModalDialogCloseButton";
 import Button from "../Shared/Button/Button";
 
 import "./AddItemDialog.css";
@@ -45,6 +46,7 @@ export default function AddItemDialog({ product, hideDialog }) {
       <section className="ai">
         <header className="ai_header">
           <h2 className="ai_title">Add to shopping cart</h2>
+          <ModalDialogCloseButton clickHandler={closeDialog} />
         </header>
         <main className="ai_body">
           <h2>{product.name}</h2>

@@ -19,35 +19,30 @@ export default function EditProduct() {
   const { _id } = useParams();
   const { products, replaceProduct } = useContext(ProductsContext);
   const product = products.find((x) => x._id === _id);
-  const { values, changeHandler, resetForm, changeValue } = useForm({
+  const { values, changeHandler, resetForm, changeValue, validateField, validateForm, errors } = useForm({
     ...product,
   });
 
 
-  function validateField(key, value) {
-    const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
+  function onValidation(key, value) {
     let result = "";
     switch (key) {
-      case "username":
+      case "name":
         if (value.length < 3 || value.length > 20) {
-          result = "The username must be between 3 and 20 symbols!";
+          result = "The product name must be between 3 and 20 symbols!";
         }
         break;
 
-      case "email":
-        if (!regex.test(String(value).toLowerCase())) {
-          result = "Please provide a valid email!";
+      case "price":
+        let num = Number(value);
+        if (!num) {
+          result = "The price is not correct number!";
         }
         break;
 
-      case "password":
-        if (value.length < 6) {
-          result = "The password length must be at list 6 symbols!";
-        }
-        break;
-      case "re-pass":
-        if (value !== values.password) {
-          result = "Confirm password don't match password!";
+      case "description":
+        if (value === "") {
+          result = "Plase provide some description!";
         }
         break;
 
@@ -59,11 +54,13 @@ export default function EditProduct() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    try {   
-      var responce = await editProduct(token, values);
-      replaceProduct(responce);
-      resetForm();
-      navigate("/");
+    try {  
+      if(validateForm(onValidation)) {
+        var responce = await editProduct(token, values);
+        replaceProduct(responce);
+        resetForm();
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       setSubmitError(error.message);
@@ -81,7 +78,8 @@ export default function EditProduct() {
           inputType="text"
           value={values.name}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.name}
         />
 
         <TextField
@@ -90,7 +88,8 @@ export default function EditProduct() {
           inputType="number"
           value={values.price}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.price}
         />
 
         <TextField
@@ -99,7 +98,8 @@ export default function EditProduct() {
           inputType="text"
           value={values.description}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          validate={validateField.bind(null, onValidation)}
+          error={errors.description}
         />
 
         <FileUpload

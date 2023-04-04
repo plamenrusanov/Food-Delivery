@@ -1,4 +1,4 @@
-.dialog_holder{
+.dd_holder{
     display: flex;
     position: fixed;
     background-color:rgba(0, 0, 0, 0.5);
@@ -11,33 +11,44 @@
     align-items: center;
 }
 
-.dialog{
+.dd{
     display: flex;
     flex-direction: column;
-    background-color: var(--palette-secondary-ligth);
+    background-color: white;
     height: fit-content;
     padding: 16px;
     border-radius: 6px;
     width: 450px;
 }
 
-.dialog_header{
+.dd_header{
     border-bottom: 2px solid var(--palette-tipography);
-    margin-bottom: 16px;
-    padding: 8px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
 }
 
-.dialog_body{
-    padding-left: 8px;
-    height: 60px;
+.dd_body{
     border-bottom: 2px solid var(--palette-tipography);
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 8px;
 }
 
-.dialog_actions{
+.dd_body > div{
+    width: 100%;
+    display: inline-flex;
+    position: relative;
+}
+
+.dd_actions{
     display: flex;
     padding: 0 8px;
     justify-content: space-between;
+}
+
+.dd_title{
+    display: inline-flex;
 }

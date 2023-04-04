@@ -14,12 +14,12 @@ export default function Login() {
   const [submitError, setSubmitError] = useState("");
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { values, changeHandler, resetForm } = useForm({
+  const { values, changeHandler, resetForm, validateField, validateForm, errors } = useForm({
     email: "",
     password: "",
   });
 
-  function validateField(key, value) {
+  function onValidation(key, value) {
     const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
     let result = "";
     switch (key) {
@@ -30,8 +30,8 @@ export default function Login() {
         break;
 
       case "password":
-        if (value.length < 6) {
-          result = "The password length must be at list 6 symbols!";
+        if (value === "") {
+          result = "The field is requared!";
         }
         break;
  
@@ -45,11 +45,13 @@ export default function Login() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      let data = await login(values.email, values.password);
-      setUser(data);
-      resetForm();
-      setSubmitError("");
-      navigate("/");
+      if(validateForm(onValidation)){
+        let data = await login(values.email, values.password);
+        setUser(data);
+        resetForm();
+        setSubmitError("");
+        navigate("/");
+      }
     } catch (error) {
       setSubmitError(error.message);
     }
@@ -66,7 +68,8 @@ export default function Login() {
           inputType="email"
           value={values.email}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          error={errors.email}
+          validate={validateField.bind(null, onValidation)}
         />
 
         <TextField
@@ -75,7 +78,8 @@ export default function Login() {
           inputType="password"
           value={values.password}
           onChangeValue={changeHandler}
-          onValidation={validateField}
+          error={errors.password}
+          validate={validateField.bind(null, onValidation)}
         />
 
         <Button type="submit">Login</Button>

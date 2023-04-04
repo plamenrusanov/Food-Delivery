@@ -7,9 +7,9 @@ import { deleteProduct } from "../../services/productService";
 
 import Button from "../Shared/Button/Button";
 import DeleteDialog from "../Shared/DeleteDialog/DeleteDialog";
+import AddItemDialog from "../AddItemDialog/AddItemDialog";
 
 import "./Card.css";
-import AddItemDialog from "../AddItemDialog/AddItemDialog";
 
 export default function Card({product}) {
 

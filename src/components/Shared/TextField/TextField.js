@@ -6,11 +6,11 @@ export default function TextField({
   inputType,
   value,
   onChangeValue,
+  validate,
   name,
-  onValidation,
+  error
 }) {
   const [focus, setFocus] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     setFocus(value === "" ? false : true);
@@ -21,11 +21,7 @@ export default function TextField({
   };
 
   const onBlurHandler = (e) => {
-    if(onValidation){
-      let result = onValidation(e.target.name, e.target.value);
-      setError(result);
-    }
-
+    validate(name);
     setFocus(value === "" ? false : true);
   };
 
@@ -44,7 +40,7 @@ export default function TextField({
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
       />
-      {error.length > 0 && <p className="text-error">{error}</p>}
+      {error && <p className="text-error">{error}</p>}
     </div>
   );
 }
