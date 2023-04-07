@@ -1,0 +1,7 @@
+.my-orders-holder{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    width: 25%;
+}

@@ -16,7 +16,7 @@ export default function ShoppingCartItem({ product }) {
     
   const { removeItem, increaseQty, decreaseQty } =
     useContext(ShoppingCartContext);
-  const [subTotal, setSubTotal] = useState(product.qty * Number(product.price));
+  const [subTotal, setSubTotal] = useState(product.subTotal);
 
   useEffect(() => {
     setSubTotal(Number(product.price) * product.qty);
@@ -31,7 +31,7 @@ export default function ShoppingCartItem({ product }) {
         <h3>{product.name}</h3>
         <p className="sci_body_price">
           <span className="sci_label">Price</span>
-          {product.price} EUR
+          {product.price.toFixed(2)} EUR
         </p>
         <div className="sci_body_qty">
           <span className="sci_label">Quantity</span>

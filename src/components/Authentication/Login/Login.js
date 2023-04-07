@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { login } from "../../../services/authService";
 import { useForm } from "../../../hooks/useForm";
@@ -11,10 +11,18 @@ import Button from "../../Shared/Button/Button";
 import "./Login.css";
 
 export default function Login() {
+  const location = useLocation();
   const [submitError, setSubmitError] = useState("");
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { values, changeHandler, resetForm, validateField, validateForm, errors } = useForm({
+  const {
+    values,
+    changeHandler,
+    resetForm,
+    validateField,
+    validateForm,
+    errors,
+  } = useForm({
     email: "",
     password: "",
   });
@@ -34,23 +42,29 @@ export default function Login() {
           result = "The field is requared!";
         }
         break;
- 
+
       default:
         break;
     }
     return result;
   }
 
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      if(validateForm(onValidation)){
+      if (validateForm(onValidation)) {
         let data = await login(values.email, values.password);
         setUser(data);
         resetForm();
         setSubmitError("");
-        navigate("/");
+        if (location?.state?.url) {
+          navigate(location.state.url, {
+            replace: true,
+            state: { showDialog: true },
+          });
+        } else {
+          navigate("/");
+        }
       }
     } catch (error) {
       setSubmitError(error.message);

@@ -37,6 +37,8 @@ export default function EditProduct() {
         let num = Number(value);
         if (!num) {
           result = "The price is not correct number!";
+        }else if(num < 0){
+          result = "The price can't be negative number!";
         }
         break;
 
@@ -56,7 +58,7 @@ export default function EditProduct() {
     e.preventDefault();
     try {  
       if(validateForm(onValidation)) {
-        var responce = await editProduct(token, values);
+        var responce = await editProduct(token, {...values, price: Number(values.price)});
         replaceProduct(responce);
         resetForm();
         navigate("/");

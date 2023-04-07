@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
@@ -12,6 +12,7 @@ import ModalDialogCloseButton from "../Shared/ModalDialogCloseButton/ModalDialog
 import "./DeliveryDetails.css";
 
 export default function DeliveryDetails({ closeModal, shoppingCartItems, clearCart }) {
+  const [submitError, setSubmitError] = useState("");
   const navigate = useNavigate();
   const { token, userName } = useContext(AuthContext);
   const {
@@ -59,6 +60,7 @@ export default function DeliveryDetails({ closeModal, shoppingCartItems, clearCa
         resetForm();
         navigate("/my-orders");
       } catch (error) {
+        setSubmitError(error?.message);
         console.log(error);
       }
     }
@@ -70,6 +72,7 @@ export default function DeliveryDetails({ closeModal, shoppingCartItems, clearCa
           <h2 className="dd_title">Delivery Details</h2>
           <ModalDialogCloseButton clickHandler={() => closeModal()} />
         </header>
+        {submitError && <p className="submit-error">{submitError}</p>}
         <main className="dd_body">
           <TextField
             inputType="text"

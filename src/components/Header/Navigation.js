@@ -26,7 +26,7 @@ export default function Navigation() {
 
       {isAuthenticated ? (
         <ul className="rigth-nav list-nav">
-          <li>Hi {userName}</li>
+          <li><b>Welcome {userName}</b></li>
           {isAdmin && (
             <li>
               <NavLink to="/create-product">Create Product</NavLink>

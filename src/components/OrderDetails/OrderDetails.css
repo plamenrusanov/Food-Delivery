@@ -1,0 +1,10 @@
+.order-items-holder{
+    display: inline-flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 32px;
+}
+
+.sci_qty{
+    border: none;
+}

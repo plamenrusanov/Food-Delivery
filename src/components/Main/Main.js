@@ -10,9 +10,10 @@ import Register from "../Authentication/Register/Register";
 import Login from "../Authentication/Login/Login";
 import Home from "../Home/Home";
 import Logout from "../Authentication/Logout/Logout";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import MyOrders from "../MyOrders/MyOrders";
 
 import "./Main.css";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 export default function Main() {
   const [products, setProducts] = useState([]);
@@ -55,6 +56,7 @@ export default function Main() {
           <Route path="/create-product" element={<CreateProduct />} />
           <Route path="/edit-product/:_id" element={<EditProduct />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
+          <Route path="/my-orders" element={<MyOrders />} />
         </Routes>
       </main>
     </ProductsContext.Provider>

@@ -46,6 +46,8 @@ export default function CreateProduct() {
         let num = Number(value);
         if (!num) {
           result = "The price is not correct number!";
+        }else if(num < 0){
+          result = "The price can't be negative number!";
         }
         break;
 
@@ -65,7 +67,7 @@ export default function CreateProduct() {
     e.preventDefault();
     try {
       if (validateForm(onValidation)) {
-        var responce = await create(token, values);
+        var responce = await create(token, {...values, price: Number(values.price)});
         addProduct(responce);
         resetForm();
         navigate("/");

@@ -52,7 +52,7 @@ export default function Card({product}) {
         </div>
         <div className="card__content">
           <h2 className="content__title">{product.name}</h2>
-          <p className="content__badge">Price: {product.price}</p>
+          <p className="content__badge">Price: {product.price.toFixed(2)}</p>
           <p className="content__section-title">{product.description}</p>
           <Button onClickHandler={onAddToCart}>Add To Cart</Button>
         </div>

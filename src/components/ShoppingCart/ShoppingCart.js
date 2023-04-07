@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -11,11 +11,12 @@ import DeliveryDetails from "../DeliveryDetails/DeliveryDetails";
 import "./ShoppingCart.css";
 
 export default function ShoppingCart() {
+  const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(AuthContext);
   const { values, calcTotal, count, clearCart } =
     useContext(ShoppingCartContext);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(location?.state?.showDialog);
 
   function closeModal() {
     setShowModal(false);
@@ -23,7 +24,7 @@ export default function ShoppingCart() {
 
   function showDeliveryDetails() {
     if (!isAuthenticated) {
-      navigate("/login");
+      navigate("/login", {state: { url: "/shopping-cart"}});
     } else {
       setShowModal(true);
     }

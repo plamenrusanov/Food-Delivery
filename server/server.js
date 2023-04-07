@@ -1340,17 +1340,11 @@
         }
     };
     var seedData = {
-        games: {
-
-        },
-        comments: {
-        
-        },
         products: {
             "12524828-8efd-49ef-8064-6a23065d810d": {
                 "_ownerId":"1e0d48ce-1fa7-4b59-b6a8-c59e46cab490",
                 "name":"Shopska salad",
-                "price":"12.50",
+                "price":12.50,
                 "description":"Tomato, cucambers, paper",
                 "imageUrl": "https://res.cloudinary.com/doyj9avxq/image/upload/v1680112505/shopska_qdb7qz.jpg",
                 "_createdOn":1679938365113
@@ -1359,7 +1353,7 @@
                 'description': "salmon fillet with spyces",
                 'imageUrl': "https://res.cloudinary.com/doyj9avxq/image/upload/v1680110444/eebk3wtqpf4b7wzepywf.jpg",
                 'name': "Salmon Fillet",
-                'price': "34.90",
+                'price': 34.90,
                 '_createdOn': 1680110452481,
                 '_ownerId': "1e0d48ce-1fa7-4b59-b6a8-c59e46cab490"
             },
@@ -1367,7 +1361,7 @@
                 'description': "tomato sause, mozzarela...",
                 'imageUrl':"https://res.cloudinary.com/doyj9avxq/image/upload/v1680110872/qfvmfykjichp2ml84eop.jpg",
                 'name': "Pizza Margarita",
-                'price': "18.70",
+                'price': 18.70,
                 '_createdOn': 1680110878709,
                 '_ownerId': "1e0d48ce-1fa7-4b59-b6a8-c59e46cab490"
             }

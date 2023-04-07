@@ -18,7 +18,7 @@ export default function AddItemDialog({ product, hideDialog }) {
   const { addItem } = useContext(ShoppingCartContext);
 
   function onAddItem() {
-    addItem({ ...product, qty });
+    addItem({ ...product, qty, subTotal });
     hideDialog();
   }
 
@@ -56,7 +56,7 @@ export default function AddItemDialog({ product, hideDialog }) {
           <div className="body_content">
             <p className="body_price">
               <span className="ai_label">Price</span>
-              {product.price} EUR
+              {product.price.toFixed(2)} EUR
             </p>
             <div className="body_qty">
               <span className="ai_label">Quantity</span>
