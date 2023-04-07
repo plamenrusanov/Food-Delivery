@@ -1,9 +1,9 @@
 import { useEffect, useContext, useState } from "react";
 
-import { getMyOrders, getOrderDetails } from "../../services/orderService";
-import { AuthContext } from "../../contexts/AuthContext";
+import { getMyOrders, getOrderDetails } from "../../../services/orderService";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-import Button from "../Shared/Button/Button";
+import Button from "../../Shared/Button/Button";
 import OrderDetails from "../OrderDetails/OrderDetails";
 
 import "./MyOrders.css";

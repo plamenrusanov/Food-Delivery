@@ -5,10 +5,10 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 
-import ModalDialogCloseButton from "../Shared/ModalDialogCloseButton/ModalDialogCloseButton";
-import Button from "../Shared/Button/Button";
+import ModalDialogCloseButton from "../../Shared/ModalDialogCloseButton/ModalDialogCloseButton";
+import Button from "../../Shared/Button/Button";
 
 import "./AddItemDialog.css";
 

@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ProductsContext } from "../../contexts/ProductsContext";
-import { AuthContext } from "../../contexts/AuthContext";
-import { deleteProduct } from "../../services/productService";
+import { ProductsContext } from "../../../contexts/ProductsContext";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { deleteProduct } from "../../../services/productService";
 
-import Button from "../Shared/Button/Button";
-import DeleteDialog from "../Shared/DeleteDialog/DeleteDialog";
-import AddItemDialog from "../AddItemDialog/AddItemDialog";
+import Button from "../../Shared/Button/Button";
+import DeleteDialog from "../../Shared/DeleteDialog/DeleteDialog";
+import AddItemDialog from "../../ShopCart/AddItemDialog/AddItemDialog";
 
 import "./Card.css";
 

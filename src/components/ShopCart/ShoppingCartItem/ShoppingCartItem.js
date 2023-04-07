@@ -6,9 +6,9 @@ import {
   faChevronRight,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 
-import Button from "../Shared/Button/Button";
+import Button from "../../Shared/Button/Button";
 
 import "./ShoppingCartItem.css";
 

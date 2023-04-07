@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
-import { AuthContext } from "../../contexts/AuthContext";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 import ShoppingCartItem from "../ShoppingCartItem/ShoppingCartItem";
-import Button from "../Shared/Button/Button";
+import Button from "../../Shared/Button/Button";
 import DeliveryDetails from "../DeliveryDetails/DeliveryDetails";
 
 import "./ShoppingCart.css";

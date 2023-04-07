@@ -4,14 +4,14 @@ import { Routes, Route } from "react-router-dom";
 import { ProductsContext } from "../../contexts/ProductsContext";
 import { getAll } from "../../services/productService";
 
-import CreateProduct from "../CreateProduct/CreateProduct";
-import EditProduct from "../EditProduct/EditProduct";
+import CreateProduct from "../Products/CreateProduct/CreateProduct";
+import EditProduct from "../Products/EditProduct/EditProduct";
 import Register from "../Authentication/Register/Register";
 import Login from "../Authentication/Login/Login";
-import Home from "../Home/Home";
+import Home from "../Menu/Home/Home";
 import Logout from "../Authentication/Logout/Logout";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import MyOrders from "../MyOrders/MyOrders";
+import ShoppingCart from "../ShopCart/ShoppingCart/ShoppingCart";
+import MyOrders from "../Orders/MyOrders/MyOrders";
 
 import "./Main.css";
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { ProductsContext } from "../../contexts/ProductsContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 
 import Card from "../Card/Card";
 

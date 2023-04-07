@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useForm } from "../../hooks/useForm";
-import { AuthContext } from "../../contexts/AuthContext";
-import { ProductsContext } from "../../contexts/ProductsContext";
-import { create } from "../../services/productService";
+import { useForm } from "../../../hooks/useForm";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
+import { create } from "../../../services/productService";
 
-import TextField from "../Shared/TextField/TextField";
-import Button from "../Shared/Button/Button";
-import FileUpload from "../Shared/FileUpload/FileUpload";
+import TextField from "../../Shared/TextField/TextField";
+import Button from "../../Shared/Button/Button";
+import FileUpload from "../../Shared/FileUpload/FileUpload";
 
 import "./CreateProduct.css";
 
