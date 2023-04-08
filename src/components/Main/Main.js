@@ -14,13 +14,14 @@ import ShoppingCart from "../ShopCart/ShoppingCart/ShoppingCart";
 import MyOrders from "../Orders/MyOrders/MyOrders";
 
 import "./Main.css";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 export default function Main() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-     getAll()
-     .then(data => setProducts(data))
-     .catch(e => console.log(e));
+    getAll()
+      .then((data) => setProducts(data))
+      .catch((e) => console.log(e));
   }, []);
 
   const addProduct = (product) => {
@@ -28,21 +29,21 @@ export default function Main() {
   };
 
   const replaceProduct = (product) => {
-    var index = products.findIndex(x => x._id === product._id);
-    if(index !== -1){
+    var index = products.findIndex((x) => x._id === product._id);
+    if (index !== -1) {
       products[index] = product;
     }
   };
 
   const removeProduct = (id) => {
-    setProducts(products.filter(x => x._id !== id));
+    setProducts(products.filter((x) => x._id !== id));
   };
 
   const contextValues = {
     products,
     addProduct,
     replaceProduct,
-    removeProduct
+    removeProduct,
   };
 
   return (
@@ -57,6 +58,7 @@ export default function Main() {
           <Route path="/edit-product/:_id" element={<EditProduct />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
           <Route path="/my-orders" element={<MyOrders />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </ProductsContext.Provider>

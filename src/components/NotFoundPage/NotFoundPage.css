@@ -1,0 +1,30 @@
+.error_page_holder{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.error_page_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: var(--palette-default-ligth);
+    padding: 32px;
+    border-radius: 6px;
+    outline: 1rem solid var(--palette-default);
+}
+
+.error_page_buttons{
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    width: 100%;
+}

@@ -85,4 +85,4 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 
 ## License
 
-This project is licensed under the MIT License. The backend server is owned by "SoftUni". Here is a link to their: <a href="https://github.com/softuni-practice-server/softuni-practice-server/blob/master/LICENSE">LICENSE</a>
+This project is licensed under the MIT License. The backend server is owned by "SoftUni". Here is a link to their <a href="https://github.com/softuni-practice-server/softuni-practice-server/blob/master/LICENSE" target="_blank">LICENSE</a>.
