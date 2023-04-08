@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { getAll } from "../../services/productService";
+import { useProducts } from "../../hooks/useProducts";
 
 import CreateProduct from "../Products/CreateProduct/CreateProduct";
 import EditProduct from "../Products/EditProduct/EditProduct";
@@ -12,42 +11,14 @@ import Home from "../Menu/Home/Home";
 import Logout from "../Authentication/Logout/Logout";
 import ShoppingCart from "../ShopCart/ShoppingCart/ShoppingCart";
 import MyOrders from "../Orders/MyOrders/MyOrders";
-
-import "./Main.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
+import "./Main.css";
+
 export default function Main() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getAll()
-      .then((data) => setProducts(data))
-      .catch((e) => console.log(e));
-  }, []);
-
-  const addProduct = (product) => {
-    setProducts((state) => [...state, product]);
-  };
-
-  const replaceProduct = (product) => {
-    var index = products.findIndex((x) => x._id === product._id);
-    if (index !== -1) {
-      products[index] = product;
-    }
-  };
-
-  const removeProduct = (id) => {
-    setProducts(products.filter((x) => x._id !== id));
-  };
-
-  const contextValues = {
-    products,
-    addProduct,
-    replaceProduct,
-    removeProduct,
-  };
 
   return (
-    <ProductsContext.Provider value={contextValues}>
+    <ProductsContext.Provider value={useProducts()}>
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />

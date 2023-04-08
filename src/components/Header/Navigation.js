@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
