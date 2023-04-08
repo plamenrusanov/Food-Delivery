@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Food Delivery Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a food delivery website where users can browse and order food from a list of available products. The website also includes a login and registration system, allowing users to create an account, save their delivery information, and view their order history.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
 
-### `npm start`
+### For non-logged in users
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The non-logged in users can do the following:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### List of available products
 
-### `npm test`
+On the application's homepage, there is a list of products that users can browse.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Add products to cart
 
-### `npm run build`
+There is a 'Add To Cart' button on each product. When a user clicks on, a dialog box opens displaying the product and its price, along with an option to select the desired quantity for purchase. At the bottom of the dialog box, there are two buttons: 'Close' - which closes the dialog box without adding the product to the cart, and 'Add' - which adds the product to the cart and then closes the dialog box.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Shopping cart
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+It contains a list of the added products and their quantity, as well as the total price of all the products in the cart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Login
 
-### `npm run eject`
+Non-logged-in users have access to the login form, where they need to enter their email and password for successful login to the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Register
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Non-logged in users have access to the registration form where they need to provide their name, email, and password for successful registration.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### For logged in users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Logged-in users can do everything that non-logged-in users can do, as well as the following functionalities:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Delivery address form
 
-### Code Splitting
+It can be accessed through the 'Delivery Details' button in the shopping cart. Non-logged-in users will be redirected to the login form to access the application. After successful login, they will be redirected back to the delivery details form.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Send order
 
-### Analyzing the Bundle Size
+After filling in the delivery form, the 'Send Order' button is pressed which sends the order. The user is redirected to the page with their orders.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Order history page
 
-### Making a Progressive Web App
+On the orders page, on the left, there is a list of the user's orders in the form of buttons with the date and time on them. Clicking on one of them will load the products of that order on the right.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Login as administrator
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The administrator user can do the following:
 
-### Deployment
+#### Add new products
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The administrator can add new products to the product list. They need to fill in all the required fields for the product, such as name, description, price, and image. Upon successful addition of the product, it will appear in the product list on the website's home page.
 
-### `npm run build` fails to minify
+#### Edit existing products
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The administrator can edit existing products in the product list. They can change the name, description, price, and image of the product. Upon successful editing of the product, the changes will be reflected in the product list on the website's home page.
+
+#### Delete existing products
+
+The administrator can delete existing products from the product list. Upon successful deletion of the product, it will be removed from the product list on the website's home page.
+
+## Technologies Used
+
+#### React
+#### HTML/CSS
+
+## Getting Started
+
+To run this project locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/plamenrusanov/food-delivery.git`
+2. Install the dependencies: `npm install`
+3. Start the backend server: `node server/server.js`
+4. Start the frontend server: `npm start`
+5. Open the website in your browser: `http://localhost:3000`
+
+## Contributing
+
+Contributions are welcome! If you find a bug or have a feature request, please open an issue. If you'd like to contribute code, please fork the repository and create a pull request.
+
+## License
+
+This project is licensed under the MIT License.
