@@ -12,6 +12,8 @@ import Logout from "../Authentication/Logout/Logout";
 import ShoppingCart from "../ShopCart/ShoppingCart/ShoppingCart";
 import MyOrders from "../Orders/MyOrders/MyOrders";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import RouteGuard from "../RouteGuard/RouteGuard";
+import AdminGuard from "../AdminGuard/AdminGuard";
 
 import "./Main.css";
 
@@ -22,13 +24,17 @@ export default function Main() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/create-product" element={<CreateProduct />} />
-          <Route path="/edit-product/:_id" element={<EditProduct />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
-          <Route path="/my-orders" element={<MyOrders />} />
+          <Route element={<RouteGuard />}>
+            <Route path="/my-orders" element={<MyOrders />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route element={<AdminGuard />}>
+              <Route path="/create-product" element={<CreateProduct />} />
+              <Route path="/edit-product/:_id" element={<EditProduct />} />
+            </Route>
+          </Route>
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </main>

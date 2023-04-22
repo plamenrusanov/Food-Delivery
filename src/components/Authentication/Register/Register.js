@@ -13,7 +13,7 @@ import Button from "../../Shared/Button/Button";
 export default function Register() {
   const [submitError, setSubmitError] = useState("");
   const navigate  = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { updateUser } = useContext(AuthContext);
   const { values, changeHandler, resetForm, validateField, validateForm, errors } = useForm({
     username: "",
     email: "",
@@ -59,7 +59,7 @@ export default function Register() {
     try {
       if(validateForm(onValidation)){
         let data = await register(values.username, values.email, values.password);
-        setUser(data);
+        updateUser(data);
         resetForm();
         setSubmitError("");
         navigate("/");

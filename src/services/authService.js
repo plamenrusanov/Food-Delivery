@@ -20,6 +20,6 @@ export async function register(username, email, password, token) {
   return data;
 }
 
-export async function logout(token) {
-   await get(endpoints.logout, token);
+export function logout(token) {
+   get(endpoints.logout, token);
 }

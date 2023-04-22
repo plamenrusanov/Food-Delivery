@@ -9,6 +9,7 @@ import { editProduct } from "../../../services/productService";
 import TextField from "../../Shared/TextField/TextField";
 import Button from "../../Shared/Button/Button";
 import FileUpload from "../../Shared/FileUpload/FileUpload";
+import NumberField from "../../Shared/NumberField/NumberField";
 
 import "../CreateProduct/CreateProduct.css";
 
@@ -68,6 +69,7 @@ export default function EditProduct() {
       setSubmitError(error.message);
     }
   };
+  console.log(values.price);
 
   return (
     <div className="form-holder">
@@ -84,10 +86,9 @@ export default function EditProduct() {
           error={errors.name}
         />
 
-        <TextField
+        <NumberField
           name="price"
           label="Price"
-          inputType="number"
           value={values.price}
           onChangeValue={changeHandler}
           validate={validateField.bind(null, onValidation)}

@@ -13,7 +13,7 @@ import "./Login.css";
 export default function Login() {
   const location = useLocation();
   const [submitError, setSubmitError] = useState("");
-  const { setUser } = useContext(AuthContext);
+  const { updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     values,
@@ -54,7 +54,7 @@ export default function Login() {
     try {
       if (validateForm(onValidation)) {
         let data = await login(values.email, values.password);
-        setUser(data);
+        updateUser(data);
         resetForm();
         setSubmitError("");
         if (location?.state?.url) {
@@ -66,7 +66,7 @@ export default function Login() {
           navigate("/");
         }
       }
-    } catch (error) {
+    } catch (error) {  
       setSubmitError(error.message);
     }
   };
